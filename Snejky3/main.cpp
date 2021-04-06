@@ -45,8 +45,6 @@ int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int n
 
 		// SIMULATE
 		engine->update();
-		//clear_screen(0xff5500);
-		//draw_rect(0, 0, 0.2, 0.2, 0xff0000);
 
 
 		// RENDER

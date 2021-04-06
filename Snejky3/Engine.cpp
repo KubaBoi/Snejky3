@@ -51,6 +51,7 @@ void Engine::update() {
 
 void Engine::draw() {
 	renderer->clearScreen(0xff5500);
+	renderer->drawRect(0, 0, 0.2, 0.2, 0xff0000);
 
 	renderer->render();
 }
