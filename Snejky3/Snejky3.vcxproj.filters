@@ -21,9 +21,6 @@
     <ClCompile Include="utils.cpp">
       <Filter>Zdrojové soubory</Filter>
     </ClCompile>
-    <ClCompile Include="Renderer.cpp">
-      <Filter>Zdrojové soubory</Filter>
-    </ClCompile>
     <ClCompile Include="Engine.cpp">
       <Filter>Zdrojové soubory\Engine</Filter>
     </ClCompile>
@@ -31,6 +28,9 @@
       <Filter>Zdrojové soubory\Engine</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
+      <Filter>Zdrojové soubory</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
       <Filter>Zdrojové soubory\Engine</Filter>
     </ClCompile>
   </ItemGroup>
