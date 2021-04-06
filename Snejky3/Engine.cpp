@@ -2,8 +2,9 @@
 
 using namespace std;
 
-Engine::Engine(HWND *win) {
+Engine::Engine(HWND* win) {
 	renderer = new Renderer(win);
+	gameScreen = new GameScreen();
 
 	running = true;
 }
@@ -46,13 +47,22 @@ LRESULT Engine::input(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
 }
 
 void Engine::update() {
-	
+	gameScreen->update();
 }
 
 void Engine::draw() {
 	renderer->clearScreen(0xff5500);
-	renderer->drawRect(0, 0, 0.2, 0.2, 0xff0000);
+	//renderer->drawRect(0, 0, 0.2, 0.2, 0xff0000);
+	gameScreen->draw(renderer);
 
 	renderer->render();
+}
+
+void Engine::addGameObject(GameObject* object) {
+	gameScreen->addGameObject(object);
+}
+
+void Engine::removeGameObject(GameObject* object) {
+	gameScreen->removeGameObject(object);
 }
 

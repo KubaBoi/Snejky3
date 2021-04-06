@@ -3,12 +3,28 @@
 
 #include "Engine.h"
 
+#include "GameObject.h"
+
 Engine* engine;
 
+GameObject* gmObj;
+void init() {
+	gmObj = new GameObject(NULL);
+	engine->addGameObject(gmObj);
+}
+
+void update() {
+}
+
 LRESULT CALLBACK window_callback(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
+	if (wParam == 119) {
+		engine->removeGameObject(gmObj);
+	}
+	
 	if (engine == nullptr) {
 		return DefWindowProc(hwnd, uMsg, wParam, lParam);
 	}
+
 	return engine->input(hwnd, uMsg, wParam, lParam);
 }
 
@@ -35,6 +51,8 @@ int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int n
 
 	engine = new Engine(&window);
 
+	init();
+
 	while (engine->running) {
 		// INPUT
 		MSG message;
@@ -44,6 +62,7 @@ int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int n
 		}
 
 		// SIMULATE
+		update();
 		engine->update();
 
 
