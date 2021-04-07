@@ -1,22 +1,24 @@
 #pragma once
 
-#include "Vector.h"
+#include "Vector3.h"
 #include "Renderer.h"
+#include "Object.h"
 
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
-class GameObject
+class GameObject: public Object 
 {
 private:
-	Vector* position;
+	Vector3* position;
 
 public:
 
-	GameObject(Vector* pPosition);
+	GameObject(Vector3* pPosition);
 
-	void update();
-	void draw(Renderer* renderer);
+	virtual void update() override;
+	virtual void draw(Renderer* renderer) override;
+	virtual void input(UINT* uMsg) override;
 };
 
 #endif

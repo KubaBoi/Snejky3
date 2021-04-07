@@ -2,7 +2,7 @@
 
 #include <vector>
 #include <algorithm>
-#include "GameObject.h"
+#include "Object.h"
 #include "Renderer.h"
 
 using namespace std;
@@ -13,16 +13,17 @@ using namespace std;
 class GameScreen
 {
 private:
-	vector<GameObject*> objects;
+	vector<Object*> objects;
 
 public:
 
 	GameScreen();
 	void update();
+	void input(UINT* uMsg);
 	void draw(Renderer* renderer);
 
-	void addGameObject(GameObject* object);
-	void removeGameObject(GameObject* object);
+	void addGameObject(Object* object);
+	void removeGameObject(Object* object);
 };
 
 #endif

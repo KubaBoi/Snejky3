@@ -23,8 +23,8 @@ public:
 	void update();
 	void draw();
 
-	void addGameObject(GameObject* object);
-	void removeGameObject(GameObject* object);
+	void addGameObject(Object* object);
+	void removeGameObject(Object* object);
 };
 
 #endif

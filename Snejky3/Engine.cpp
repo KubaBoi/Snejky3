@@ -12,6 +12,8 @@ Engine::Engine(HWND* win) {
 LRESULT Engine::input(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
 	LRESULT result = 0;
 
+	gameScreen->input(&uMsg);
+
 	switch (uMsg) {
 	case WM_CLOSE:
 	case WM_DESTROY: {
@@ -50,19 +52,41 @@ void Engine::update() {
 	gameScreen->update();
 }
 
+Color* r = new Color(0,0,0);
+bool more = true;
 void Engine::draw() {
-	renderer->clearScreen(0xff5500);
+	//renderer->clearScreen(0xff5500);
+	renderer->clearScreen(renderer->convertColor(r));
 	//renderer->drawRect(0, 0, 0.2, 0.2, 0xff0000);
 	gameScreen->draw(renderer);
+
+	if (r->r >= 255) more = false;
+	if (r->r <= 0) more = true;
+
+	if (more) {
+		r->r++;
+		r->g++;
+		r->b++;
+	}
+	else {
+		r->r--;
+		r->g--;
+		r->b--;
+	}
+
+	/*renderer->drawTriangle(new Vector2(0, 0),
+		new Vector2(500, 200),
+		new Vector2(500, 100),
+		r);*/
 
 	renderer->render();
 }
 
-void Engine::addGameObject(GameObject* object) {
+void Engine::addGameObject(Object* object) {
 	gameScreen->addGameObject(object);
 }
 
-void Engine::removeGameObject(GameObject* object) {
+void Engine::removeGameObject(Object* object) {
 	gameScreen->removeGameObject(object);
 }
 
